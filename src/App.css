@@ -1,0 +1,61 @@
+body, button, h2 {
+  font-family: 'Roboto', sans-serif;
+}
+
+.app {
+   background:url("background.jpg") no-repeat;
+   background-size: cover;
+   position: absolute;
+   top: 0;
+   left: 0;
+   right: 0;
+   bottom: 0;
+} 
+
+.container {
+  width: 960px;
+  margin: 200px auto;
+  border-radius: 20px;
+  padding: 30px;
+  /* background:rgba(32, 32, 32, 0.5); */
+  background:rgba(38, 19, 13, 0.5);
+  background:rgba(89, 50, 28, 0.6);
+}
+
+.container form, .container table, label {
+  color: #D9D9D9;
+}
+
+.container form {
+  display: flex;
+  margin-bottom: 50px;
+}
+
+.form-control input {
+  padding: 5px;
+  border-radius: 5px;
+  margin-left: 10px;
+  margin-right: 50px;
+}
+
+.container form button {
+  background-color: #26130D;
+  color: #D9D9D9;
+  padding: 5px 10px;
+  border-radius: 5px;
+  border-radius: 5px;
+  border:0;
+}
+
+.container table {
+  margin-top:10px;
+}
+
+.container table td {
+  padding: 5px 20px;
+}
+
+h2 {
+  font-size: 20px;
+  color: #D9D9D9;
+}
