@@ -1,34 +1,54 @@
-function OrderForm() {
-    function send(e) {
-        e.preventDefault();
-        console.log('ok');
-        // fetch('https://localhost:44350/order/')
-        // .then(function(response) {
-        //     if ( response.status !== 200 ) {
-        //         console.log('Status Code: ' +  response.status);
-        //         return;
-        //     }
+import React from 'react';
 
-        //     response.json().then(function(data) {
-        //         console.log(data);
-        //     });
-        // });
+class OrderForm extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = { inputValue: '' };
+
+        this.handleChangeInput = this.handleChangeInput.bind(this);
+        this.handleSendOrder = this.handleSendOrder.bind(this);
     }
 
-    return (
-        <form className="order-form">
-            <div className="form-control">
-                <label>Input</label>
-                <input type="text"></input>
-            </div>
-            <div className="form-control">
-                <label>Output</label>
-                <input type="text"></input>
-            </div>
+    handleSendOrder(event) {
+        event.preventDefault();
+        console.log(this.state.inputValue);
 
-            <button onClick={send}>Send Order</button>
-        </form>
-    );
+        fetch('https://localhost:44350/order/' + this.state.inputValue)
+        .then(function(response) {
+            if ( response.status !== 200 ) {
+                console.log(response);
+                console.log('Status Code: ' +  response.status);
+                return;
+            }
+
+            response.json().then(function(data) {
+                
+                console.log(data);
+            });
+        });
+    }
+
+    handleChangeInput(event){
+        this.setState({inputValue: event.target.value});
+    }
+
+    render() {
+        return (
+            <form className="order-form">
+                <div className="form-control">
+                    <label>Input</label>
+                    <input type="text" value={this.state.inputValue} onChange={this.handleChangeInput}></input>
+                </div>
+                <div className="form-control">
+                    <label>Output</label>
+                    <input type="text"></input>
+                </div>
+
+                <button onClick={this.handleSendOrder}>Send Order</button>
+            </form>
+        );
+    }
+
 }
 
 export default OrderForm;
