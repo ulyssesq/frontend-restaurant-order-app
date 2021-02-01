@@ -1,10 +1,6 @@
 import React from 'react';
 
 class HistoryItem extends React.Component {
-    constructor(props) {
-        super(props);
-    }
-
     render() {
         const historyData = this.props.historyData;
 

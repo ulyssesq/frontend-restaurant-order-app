@@ -11,19 +11,29 @@ class OrderForm extends React.Component {
 
     handleSendOrder(event) {
         event.preventDefault();
-        console.log(this.state.inputValue);
         var self = this;
+
+        var inputValue = this.state.inputValue;
+
+        if (inputValue == '') {
+            self.setState({outputValue : "error"});
+            self.props.addToHistory({
+                input: this.state.inputValue,
+                output: "error"
+            });
+            return;
+        }
 
         fetch('https://localhost:44350/order/' + this.state.inputValue)
         .then(function(response) {
             if ( response.status !== 200 ) {
                 console.log(response);
-                console.log('Status Code: ' +  response.status);
                 return;
             }
 
             response.json().then(function(data) {
                 self.setState({outputValue : data.output});
+                self.props.addToHistory(data);
             });
         });
     }
