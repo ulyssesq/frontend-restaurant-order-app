@@ -48,17 +48,17 @@ class OrderForm extends React.Component {
                 <div className="form-control">
                     <label>Input</label>
                     <input type="text" value={this.state.inputValue} onChange={this.handleChangeInput}></input>
+                
+                    <button onClick={this.handleSendOrder}>Send Order</button>
                 </div>
+                
                 <div className="form-control">
                     <label>Output</label>
-                    <input type="text" readOnly={true} value={this.state.outputValue}></input>
+                    <input type="text" readOnly={true} value={this.state.outputValue} className="output"></input>
                 </div>
-
-                <button onClick={this.handleSendOrder}>Send Order</button>
             </form>
         );
     }
-
 }
 
 export default OrderForm;

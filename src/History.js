@@ -8,28 +8,27 @@ class History extends React.Component {
         if (history.length === 0) {
             return (null);
         }
-        else {
-            const rows = history.map((row, index) => {
-                return (
-                    <HistoryItem historyData={row} key={index}></HistoryItem>
-                )
-            });
 
+        const rows = history.map((row, index) => {
             return (
-                <div className="history">
-                    <h2>History</h2>
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Input</th>
-                                <th>Output</th>
-                            </tr>
-                        </thead>
-                        <tbody>{rows}</tbody>
-                    </table>
-                </div>
-            );
-        }
+                <HistoryItem historyData={row} key={index}></HistoryItem>
+            )
+        });
+
+        return (
+            <div className="history">
+                <h2>History</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Input</th>
+                            <th>Output</th>
+                        </tr>
+                    </thead>
+                    <tbody>{rows}</tbody>
+                </table>
+            </div>
+        );
     }
 }
 
