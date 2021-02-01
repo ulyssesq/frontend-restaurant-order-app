@@ -1,3 +1,5 @@
+import HistoryItem from './HistoryItem';
+
 function History() {
     return (
         <div className="history">
@@ -10,14 +12,8 @@ function History() {
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>morning, 1, 2, 3</td>
-                        <td>eggs, toast, coffee</td>
-                    </tr>
-                    <tr>
-                        <td>morning, 2, 1, 3</td>
-                        <td>eggs, toast, coffee</td>
-                    </tr>
+                    <HistoryItem historyData={{input : "morning, 1, 2, 3", output: "eggs, toast, coffee"}}></HistoryItem>
+                    <HistoryItem historyData={{input : "morning, 2, 1, 3", output: "eggs, toast, coffee"}}></HistoryItem>
                 </tbody>
             </table>
         </div>

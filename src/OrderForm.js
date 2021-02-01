@@ -3,7 +3,7 @@ import React from 'react';
 class OrderForm extends React.Component {
     constructor(props) {
         super(props);
-        this.state = { inputValue: '' };
+        this.state = { inputValue: '', outputValue: '' };
 
         this.handleChangeInput = this.handleChangeInput.bind(this);
         this.handleSendOrder = this.handleSendOrder.bind(this);
@@ -12,6 +12,7 @@ class OrderForm extends React.Component {
     handleSendOrder(event) {
         event.preventDefault();
         console.log(this.state.inputValue);
+        var self = this;
 
         fetch('https://localhost:44350/order/' + this.state.inputValue)
         .then(function(response) {
@@ -22,8 +23,7 @@ class OrderForm extends React.Component {
             }
 
             response.json().then(function(data) {
-                
-                console.log(data);
+                self.setState({outputValue : data.output});
             });
         });
     }
@@ -41,7 +41,7 @@ class OrderForm extends React.Component {
                 </div>
                 <div className="form-control">
                     <label>Output</label>
-                    <input type="text"></input>
+                    <input type="text" readOnly={true} value={this.state.outputValue}></input>
                 </div>
 
                 <button onClick={this.handleSendOrder}>Send Order</button>
